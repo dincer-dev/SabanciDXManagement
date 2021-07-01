@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:intf="http://webservice2.dincer.ik" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://webservice2.dincer.ik" targetNamespace="http://webservice2.dincer.ik" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://webservice2.dincer.ik">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="IzinValue">
+        <xsd:sequence>
+          <xsd:element name="adi" nillable="true" type="soapenc:string" />
+          <xsd:element name="isbasiTarihi" nillable="true" type="soapenc:string" />
+          <xsd:element name="isyeriKodu" nillable="true" type="soapenc:string" />
+          <xsd:element name="izinAciklama" nillable="true" type="soapenc:string" />
+          <xsd:element name="izinBaslangicSaati" nillable="true" type="soapenc:string" />
+          <xsd:element name="izinBaslangicTarihi" nillable="true" type="soapenc:string" />
+          <xsd:element name="izinBitisSaati" nillable="true" type="soapenc:string" />
+          <xsd:element name="izinGuncellemeSaati" nillable="true" type="soapenc:string" />
+          <xsd:element name="izinGuncellemeTarihi" nillable="true" type="soapenc:string" />
+          <xsd:element name="izinSiraNo" nillable="true" type="soapenc:string" />
+          <xsd:element name="izinSuresi" nillable="true" type="soapenc:string" />
+          <xsd:element name="izinTipiAdi" nillable="true" type="soapenc:string" />
+          <xsd:element name="izinTipiKodu" nillable="true" type="soapenc:string" />
+          <xsd:element name="izinYili" nillable="true" type="soapenc:string" />
+          <xsd:element name="referansNo" nillable="true" type="soapenc:string" />
+          <xsd:element name="sicilNo" nillable="true" type="soapenc:string" />
+          <xsd:element name="soyadi" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfIzinValue">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="impl:IzinValue[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="PersonelValue">
+        <xsd:sequence>
+          <xsd:element name="caskerh" nillable="true" type="soapenc:string" />
+          <xsd:element name="ccalgrb" nillable="true" type="soapenc:string" />
+          <xsd:element name="ccikisn" nillable="true" type="soapenc:string" />
+          <xsd:element name="ccikist" nillable="true" type="soapenc:string" />
+          <xsd:element name="cdogtar" nillable="true" type="soapenc:string" />
+          <xsd:element name="cfnksyn" nillable="true" type="soapenc:string" />
+          <xsd:element name="cgirist" nillable="true" type="soapenc:string" />
+          <xsd:element name="chukkod" nillable="true" type="soapenc:string" />
+          <xsd:element name="ciliadi" nillable="true" type="soapenc:string" />
+          <xsd:element name="cilkgir" nillable="true" type="soapenc:string" />
+          <xsd:element name="cisyeri" nillable="true" type="soapenc:string" />
+          <xsd:element name="ckadadt" nillable="true" type="soapenc:string" />
+          <xsd:element name="ckangrb" nillable="true" type="soapenc:string" />
+          <xsd:element name="ckunvan" nillable="true" type="soapenc:string" />
+          <xsd:element name="cmedhal" nillable="true" type="soapenc:string" />
+          <xsd:element name="cogrsev" nillable="true" type="soapenc:string" />
+          <xsd:element name="corgadt" nillable="true" type="soapenc:string" />
+          <xsd:element name="corgkod" nillable="true" type="soapenc:string" />
+          <xsd:element name="cperbad" nillable="true" type="soapenc:string" />
+          <xsd:element name="cpercin" nillable="true" type="soapenc:string" />
+          <xsd:element name="cpersad" nillable="true" type="soapenc:string" />
+          <xsd:element name="cpozkod" nillable="true" type="soapenc:string" />
+          <xsd:element name="csakkod2" nillable="true" type="soapenc:string" />
+          <xsd:element name="csicili" nillable="true" type="soapenc:string" />
+          <xsd:element name="cyakren" nillable="true" type="soapenc:string" />
+          <xsd:element name="ismailadresi" nillable="true" type="soapenc:string" />
+          <xsd:element name="masrafyeriadi" nillable="true" type="soapenc:string" />
+          <xsd:element name="masrafyerikodu" nillable="true" type="soapenc:string" />
+          <xsd:element name="ozelmailadresi" nillable="true" type="soapenc:string" />
+          <xsd:element name="tckimlikno" nillable="true" type="soapenc:string" />
+          <xsd:element name="unvanaciklamasi" nillable="true" type="soapenc:string" />
+          <xsd:element name="unvankodu" nillable="true" type="soapenc:string" />
+          <xsd:element name="yoneticipozisyonadi" nillable="true" type="soapenc:string" />
+          <xsd:element name="yoneticipozisyonkodu" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfPersonelValue">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="impl:PersonelValue[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="SonucBean">
+        <xsd:sequence>
+          <xsd:element name="izinValues" nillable="true" type="impl:ArrayOfIzinValue" />
+          <xsd:element name="personelBeans" nillable="true" type="impl:ArrayOfPersonelValue" />
+          <xsd:element name="resultMessage" nillable="true" type="soapenc:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getPersonelBilgileriResponse">
+    <wsdl:part name="getPersonelBilgileriReturn" type="impl:SonucBean" />
+  </wsdl:message>
+  <wsdl:message name="getIzinBilgileriResponse">
+    <wsdl:part name="getIzinBilgileriReturn" type="impl:SonucBean" />
+  </wsdl:message>
+  <wsdl:message name="getIzinBilgileriRequest">
+    <wsdl:part name="pass" type="xsd:string" />
+    <wsdl:part name="sDate" type="xsd:string" />
+    <wsdl:part name="eDate" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getPersonelBilgileriRequest">
+    <wsdl:part name="pass" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="IKWebServiceDincer2">
+    <wsdl:operation name="getPersonelBilgileri" parameterOrder="pass">
+      <wsdl:input name="getPersonelBilgileriRequest" message="impl:getPersonelBilgileriRequest" />
+      <wsdl:output name="getPersonelBilgileriResponse" message="impl:getPersonelBilgileriResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getIzinBilgileri" parameterOrder="pass sDate eDate">
+      <wsdl:input name="getIzinBilgileriRequest" message="impl:getIzinBilgileriRequest" />
+      <wsdl:output name="getIzinBilgileriResponse" message="impl:getIzinBilgileriResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IKWebServiceDincer2SoapBinding" type="impl:IKWebServiceDincer2">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="getPersonelBilgileri">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getPersonelBilgileriRequest">
+        <wsdlsoap:body use="encoded" namespace="http://webservice2.dincer.ik" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getPersonelBilgileriResponse">
+        <wsdlsoap:body use="encoded" namespace="http://webservice2.dincer.ik" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIzinBilgileri">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getIzinBilgileriRequest">
+        <wsdlsoap:body use="encoded" namespace="http://webservice2.dincer.ik" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="getIzinBilgileriResponse">
+        <wsdlsoap:body use="encoded" namespace="http://webservice2.dincer.ik" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IKWebServiceDincer2Service">
+    <wsdl:port name="IKWebServiceDincer2" binding="impl:IKWebServiceDincer2SoapBinding">
+      <wsdlsoap:address location="https://hrwebssl.bimsa.com.tr/ik/services/IKWebServiceDincer2" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
