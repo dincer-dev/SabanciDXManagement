@@ -382,7 +382,7 @@ namespace SabanciDxManagement
             var loggerFactory = new LoggerFactory();
             var loggerConfig = new LoggerConfiguration()
                 
-                .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.File("Logs\\log.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
             loggerFactory.AddSerilog(loggerConfig);
             // create logger and put it to work.
