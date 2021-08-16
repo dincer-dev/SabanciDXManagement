@@ -61,14 +61,15 @@ namespace SabanciDxManagement
                     stopwatch.Stop();
                     logProvider.LogInformation($"Add To Database  Finished:{stopwatch.ElapsedMilliseconds.ToString()} milisecods");
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 StringBuilder sbException = new StringBuilder();
-                while(ex.InnerException!=null)
+                do
                 {
-                    sbException.Append(ex.InnerException);
+                    sbException.Append(ex.Message);
                     ex = ex.InnerException;
-                }
+                } while (ex.InnerException != null);
                 logProvider.LogError($"Getting Personel An Exception Occured {sbException.ToString()}");
             }
 
@@ -191,40 +192,169 @@ namespace SabanciDxManagement
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = sql;
 
-                    cmd.Parameters.Add("@Caskerh", SqlDbType.NVarChar).Value = personel.caskerh;
-                    cmd.Parameters.Add("@Ccalgrb", SqlDbType.NVarChar).Value = personel.ccalgrb;
-                    cmd.Parameters.Add("@Ccikisn", SqlDbType.NVarChar).Value = personel.ccikisn;
-                    cmd.Parameters.Add("@Ccikist", SqlDbType.NVarChar).Value = personel.ccikist;
-                    cmd.Parameters.Add("@Cdogtar", SqlDbType.NVarChar).Value = personel.cdogtar;
-                    cmd.Parameters.Add("@Cfnksyn", SqlDbType.NVarChar).Value = personel.cfnksyn;
-                    cmd.Parameters.Add("@Cgirist", SqlDbType.NVarChar).Value = personel.cgirist;
-                    cmd.Parameters.Add("@Chukkod", SqlDbType.NVarChar).Value = personel.chukkod;
-                    cmd.Parameters.Add("@Ciliadi", SqlDbType.NVarChar).Value = personel.ciliadi;
-                    cmd.Parameters.Add("@Cilkgir", SqlDbType.NVarChar).Value = personel.cilkgir;
-                    cmd.Parameters.Add("@Cisyeri", SqlDbType.NVarChar).Value = personel.cisyeri;
-                    cmd.Parameters.Add("@Ckadadt", SqlDbType.NVarChar).Value = personel.ckadadt;
-                    cmd.Parameters.Add("@Ckangrb", SqlDbType.NVarChar).Value = personel.ckangrb;
-                    cmd.Parameters.Add("@Ckunvan", SqlDbType.NVarChar).Value = personel.ckunvan;
-                    cmd.Parameters.Add("@Cmedhal", SqlDbType.NVarChar).Value = personel.cmedhal;
-                    cmd.Parameters.Add("@Cogrsev", SqlDbType.NVarChar).Value = personel.cogrsev;
-                    cmd.Parameters.Add("@Corgadt", SqlDbType.NVarChar).Value = personel.corgadt;
-                    cmd.Parameters.Add("@Corgkod", SqlDbType.NVarChar).Value = personel.corgkod;
-                    cmd.Parameters.Add("@Cperbad", SqlDbType.NVarChar).Value = personel.cperbad;
-                    cmd.Parameters.Add("@Cpercin", SqlDbType.NVarChar).Value = personel.cpercin;
-                    cmd.Parameters.Add("@Cpersad", SqlDbType.NVarChar).Value = personel.cpersad;
-                    cmd.Parameters.Add("@Cpozkod", SqlDbType.NVarChar).Value = personel.cpozkod;
-                    cmd.Parameters.Add("@Csakkod2", SqlDbType.NVarChar).Value = personel.csakkod2;
-                    cmd.Parameters.Add("@Csicili", SqlDbType.NVarChar).Value = personel.csicili;
-                    cmd.Parameters.Add("@Cyakren", SqlDbType.NVarChar).Value = personel.cyakren;
-                    cmd.Parameters.Add("@IsMailAdresi", SqlDbType.NVarChar).Value = personel.ismailadresi;
-                    cmd.Parameters.Add("@MasrafYeriAdi", SqlDbType.NVarChar).Value = personel.masrafyeriadi;
-                    cmd.Parameters.Add("@MasrafYeriKodu", SqlDbType.NVarChar).Value = personel.masrafyerikodu;
-                    cmd.Parameters.Add("@OzelMailAdresi", SqlDbType.NVarChar).Value = personel.ozelmailadresi;
-                    cmd.Parameters.Add("@TcKimlikNo", SqlDbType.NVarChar).Value = personel.tckimlikno;
-                    cmd.Parameters.Add("@UnvanAciklamasi", SqlDbType.NVarChar).Value = personel.unvanaciklamasi;
-                    cmd.Parameters.Add("@UnvanKodu", SqlDbType.NVarChar).Value = personel.unvankodu;
-                    cmd.Parameters.Add("@YoneticiPozisyonAdi", SqlDbType.NVarChar).Value = personel.yoneticipozisyonadi;
-                    cmd.Parameters.Add("@YoneticiPozisyonKodu", SqlDbType.NVarChar).Value = personel.yoneticipozisyonkodu;
+                    if (!string.IsNullOrEmpty(personel.caskerh))
+                        cmd.Parameters.Add("@Caskerh", SqlDbType.NVarChar).Value = personel.caskerh;
+                    else
+                        cmd.Parameters.Add("@Caskerh", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.ccalgrb))
+                        cmd.Parameters.Add("@Ccalgrb", SqlDbType.NVarChar).Value = personel.ccalgrb;
+                    else
+                        cmd.Parameters.Add("@Ccalgrb", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.ccikisn))
+                        cmd.Parameters.Add("@Ccikisn", SqlDbType.NVarChar).Value = personel.ccikisn;
+                    else
+                        cmd.Parameters.Add("@Ccikisn", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.ccikist))
+                        cmd.Parameters.Add("@Ccikist", SqlDbType.NVarChar).Value = personel.ccikist;
+                    else
+                        cmd.Parameters.Add("@Ccikist", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.cdogtar))
+                        cmd.Parameters.Add("@Cdogtar", SqlDbType.NVarChar).Value = personel.cdogtar;
+                    else
+                        cmd.Parameters.Add("@Cdogtar", SqlDbType.NVarChar).Value = DBNull.Value;
+                    if (!string.IsNullOrEmpty(personel.cfnksyn))
+                        cmd.Parameters.Add("@Cfnksyn", SqlDbType.NVarChar).Value = personel.cfnksyn;
+                    else
+                        cmd.Parameters.Add("@Cfnksyn", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.cgirist))
+                        cmd.Parameters.Add("@Cgirist", SqlDbType.NVarChar).Value = personel.cgirist;
+                    else
+                        cmd.Parameters.Add("@Cgirist", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.chukkod))
+                        cmd.Parameters.Add("@Chukkod", SqlDbType.NVarChar).Value = personel.chukkod;
+                    else
+                        cmd.Parameters.Add("@Chukkod", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.ciliadi))
+                        cmd.Parameters.Add("@Ciliadi", SqlDbType.NVarChar).Value = personel.ciliadi;
+                    else
+                        cmd.Parameters.Add("@Ciliadi", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.cilkgir))
+                        cmd.Parameters.Add("@Cilkgir", SqlDbType.NVarChar).Value = personel.cilkgir;
+                    else
+                        cmd.Parameters.Add("@Cilkgir", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.cisyeri))
+                        cmd.Parameters.Add("@Cisyeri", SqlDbType.NVarChar).Value = personel.cisyeri;
+                    else
+                        cmd.Parameters.Add("@Cisyeri", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.ckadadt))
+                        cmd.Parameters.Add("@Ckadadt", SqlDbType.NVarChar).Value = personel.ckadadt;
+                    else
+                        cmd.Parameters.Add("@Ckadadt", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.ckangrb))
+                        cmd.Parameters.Add("@Ckangrb", SqlDbType.NVarChar).Value = personel.ckangrb;
+                    else
+                        cmd.Parameters.Add("@Ckangrb", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.ckunvan))
+                        cmd.Parameters.Add("@Ckunvan", SqlDbType.NVarChar).Value = personel.ckunvan;
+                    else
+                        cmd.Parameters.Add("@Ckunvan", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.cmedhal))
+                        cmd.Parameters.Add("@Cmedhal", SqlDbType.NVarChar).Value = personel.cmedhal;
+                    else
+                        cmd.Parameters.Add("@Cmedhal", SqlDbType.NVarChar).Value = DBNull.Value;
+                    if (!string.IsNullOrEmpty(personel.cogrsev))
+                        cmd.Parameters.Add("@Cogrsev", SqlDbType.NVarChar).Value = personel.cogrsev;
+                    else
+                        cmd.Parameters.Add("@Cogrsev", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.corgadt))
+                        cmd.Parameters.Add("@Corgadt", SqlDbType.NVarChar).Value = personel.corgadt;
+                    else
+                        cmd.Parameters.Add("@Corgadt", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.corgkod))
+                        cmd.Parameters.Add("@Corgkod", SqlDbType.NVarChar).Value = personel.corgkod;
+                    else
+                        cmd.Parameters.Add("@Corgkod", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.cperbad))
+                        cmd.Parameters.Add("@Cperbad", SqlDbType.NVarChar).Value = personel.cperbad;
+                    else
+                        cmd.Parameters.Add("@Cperbad", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.cpercin))
+                        cmd.Parameters.Add("@Cpercin", SqlDbType.NVarChar).Value = personel.cpercin;
+                    else
+                        cmd.Parameters.Add("@Cpercin", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.cpersad))
+                        cmd.Parameters.Add("@Cpersad", SqlDbType.NVarChar).Value = personel.cpersad;
+                    else
+                        cmd.Parameters.Add("@Cpersad", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.cpozkod))
+                        cmd.Parameters.Add("@Cpozkod", SqlDbType.NVarChar).Value = personel.cpozkod;
+                    else
+                        cmd.Parameters.Add("@Cpozkod", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.csakkod2))
+                        cmd.Parameters.Add("@Csakkod2", SqlDbType.NVarChar).Value = personel.csakkod2;
+                    else
+                        cmd.Parameters.Add("@Csakkod2", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.csicili))
+                        cmd.Parameters.Add("@Csicili", SqlDbType.NVarChar).Value = personel.csicili;
+                    else
+                        cmd.Parameters.Add("@Csicili", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.cyakren))
+                        cmd.Parameters.Add("@Cyakren", SqlDbType.NVarChar).Value = personel.cyakren;
+                    else
+                        cmd.Parameters.Add("@Cyakren", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.ismailadresi))
+                        cmd.Parameters.Add("@IsMailAdresi", SqlDbType.NVarChar).Value = personel.ismailadresi;
+                    else
+                        cmd.Parameters.Add("@IsMailAdresi", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.masrafyeriadi))
+                        cmd.Parameters.Add("@MasrafYeriAdi", SqlDbType.NVarChar).Value = personel.masrafyeriadi;
+                    else
+                        cmd.Parameters.Add("@MasrafYeriAdi", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.masrafyerikodu))
+                        cmd.Parameters.Add("@MasrafYeriKodu", SqlDbType.NVarChar).Value = personel.masrafyerikodu;
+                    else
+                        cmd.Parameters.Add("@MasrafYeriKodu", SqlDbType.NVarChar).Value = DBNull.Value;
+                    if (!string.IsNullOrEmpty(personel.ozelmailadresi))
+                        cmd.Parameters.Add("@OzelMailAdresi", SqlDbType.NVarChar).Value = personel.ozelmailadresi;
+                    else
+                        cmd.Parameters.Add("@OzelMailAdresi", SqlDbType.NVarChar).Value = DBNull.Value;
+                    if (!string.IsNullOrEmpty(personel.tckimlikno))
+                        cmd.Parameters.Add("@TcKimlikNo", SqlDbType.NVarChar).Value = personel.tckimlikno;
+                    else
+                        cmd.Parameters.Add("@TcKimlikNo", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.unvanaciklamasi))
+                        cmd.Parameters.Add("@UnvanAciklamasi", SqlDbType.NVarChar).Value = personel.unvanaciklamasi;
+                    else
+                        cmd.Parameters.Add("@UnvanAciklamasi", SqlDbType.NVarChar).Value = DBNull.Value;
+
+                    if (!string.IsNullOrEmpty(personel.unvankodu))
+                        cmd.Parameters.Add("@UnvanKodu", SqlDbType.NVarChar).Value = personel.unvankodu;
+                    else
+                        cmd.Parameters.Add("@UnvanKodu", SqlDbType.NVarChar).Value = DBNull.Value;
+                    if (!string.IsNullOrEmpty(personel.yoneticipozisyonadi))
+                        cmd.Parameters.Add("@YoneticiPozisyonAdi", SqlDbType.NVarChar).Value = personel.yoneticipozisyonadi;
+                    else
+                        cmd.Parameters.Add("@YoneticiPozisyonAdi", SqlDbType.NVarChar).Value = DBNull.Value;
+                    if (!string.IsNullOrEmpty(personel.yoneticipozisyonkodu))
+                        cmd.Parameters.Add("@YoneticiPozisyonKodu", SqlDbType.NVarChar).Value = personel.yoneticipozisyonkodu;
+                    else
+                        cmd.Parameters.Add("@YoneticiPozisyonKodu", SqlDbType.NVarChar).Value = DBNull.Value;
                     cmd.Parameters.Add("@DateCreated", SqlDbType.DateTime).Value = DateTime.Now;
                     cmd.Parameters.Add("@IsActive", SqlDbType.Bit).Value = 1;
                     cmd.ExecuteNonQuery();
