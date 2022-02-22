@@ -39,7 +39,7 @@ namespace SabanciDxManagement.ServiceReference1 {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -99,7 +99,7 @@ namespace SabanciDxManagement.ServiceReference1 {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -355,12 +355,14 @@ namespace SabanciDxManagement.ServiceReference1 {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4161.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.SoapTypeAttribute(Namespace="http://webservice2.dincer.ik")]
     public partial class PersonelValue : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string calisanGrupKoduField;
         
         private string caskerhField;
         
@@ -429,6 +431,18 @@ namespace SabanciDxManagement.ServiceReference1 {
         private string yoneticipozisyonadiField;
         
         private string yoneticipozisyonkoduField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.SoapElementAttribute(IsNullable=true)]
+        public string calisanGrupKodu {
+            get {
+                return this.calisanGrupKoduField;
+            }
+            set {
+                this.calisanGrupKoduField = value;
+                this.RaisePropertyChanged("calisanGrupKodu");
+            }
+        }
         
         /// <remarks/>
         [System.Xml.Serialization.SoapElementAttribute(IsNullable=true)]

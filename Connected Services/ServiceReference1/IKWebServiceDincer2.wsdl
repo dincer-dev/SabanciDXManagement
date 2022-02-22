@@ -33,6 +33,7 @@
       </xsd:complexType>
       <xsd:complexType name="PersonelValue">
         <xsd:sequence>
+          <xsd:element name="calisanGrupKodu" nillable="true" type="soapenc:string" />
           <xsd:element name="caskerh" nillable="true" type="soapenc:string" />
           <xsd:element name="ccalgrb" nillable="true" type="soapenc:string" />
           <xsd:element name="ccikisn" nillable="true" type="soapenc:string" />
@@ -85,16 +86,16 @@
       </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="getPersonelBilgileriResponse">
-    <wsdl:part name="getPersonelBilgileriReturn" type="impl:SonucBean" />
-  </wsdl:message>
-  <wsdl:message name="getIzinBilgileriResponse">
-    <wsdl:part name="getIzinBilgileriReturn" type="impl:SonucBean" />
-  </wsdl:message>
   <wsdl:message name="getIzinBilgileriRequest">
     <wsdl:part name="pass" type="xsd:string" />
     <wsdl:part name="sDate" type="xsd:string" />
     <wsdl:part name="eDate" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="getIzinBilgileriResponse">
+    <wsdl:part name="getIzinBilgileriReturn" type="impl:SonucBean" />
+  </wsdl:message>
+  <wsdl:message name="getPersonelBilgileriResponse">
+    <wsdl:part name="getPersonelBilgileriReturn" type="impl:SonucBean" />
   </wsdl:message>
   <wsdl:message name="getPersonelBilgileriRequest">
     <wsdl:part name="pass" type="xsd:string" />

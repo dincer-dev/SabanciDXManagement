@@ -32,7 +32,7 @@ namespace SabanciDxManagement
         static string destDir = "";
         static string destFileName = "";
         static string connectionString => ConfigurationManager.ConnectionStrings["dbConnection"].ConnectionString;
-        static string sql = "INSERT INTO [dbo].[EmployeeDx]([Caskerh],[Ccalgrb],[Ccikisn],[Ccikist],[Cdogtar],[Cfnksyn],[Cgirist],[Chukkod],[Ciliadi],[Cilkgir],[Cisyeri],[Ckadadt],[Ckangrb],[Ckunvan],[Cmedhal],[Cogrsev],[Corgadt],[Corgkod],[Cperbad],[Cpercin],[Cpersad],[Cpozkod],[Csakkod2],[Csicili],[Cyakren],[IsMailAdresi],[MasrafYeriAdi],[MasrafYeriKodu],[OzelMailAdresi],[TcKimlikNo],[UnvanAciklamasi],[UnvanKodu],[YoneticiPozisyonAdi],[YoneticiPozisyonKodu],[DateCreated],[IsActive]) VALUES(@Caskerh, @Ccalgrb, @Ccikisn, @Ccikist, @Cdogtar, @Cfnksyn, @Cgirist, @Chukkod, @Ciliadi, @Cilkgir, @Cisyeri, @Ckadadt, @Ckangrb, @Ckunvan, @Cmedhal, @Cogrsev, @Corgadt, @Corgkod, @Cperbad, @Cpercin, @Cpersad, @Cpozkod, @Csakkod2, @Csicili, @Cyakren, @IsMailAdresi, @MasrafYeriAdi, @MasrafYeriKodu, @OzelMailAdresi, @TcKimlikNo, @UnvanAciklamasi,@UnvanKodu, @YoneticiPozisyonAdi, @YoneticiPozisyonKodu, @DateCreated, @IsActive)";
+        static string sql = "INSERT INTO [dbo].[EmployeeDx]([Caskerh],[Ccalgrb],[Ccikisn],[Ccikist],[Cdogtar],[Cfnksyn],[Cgirist],[Chukkod],[Ciliadi],[Cilkgir],[Cisyeri],[Ckadadt],[Ckangrb],[Ckunvan],[Cmedhal],[Cogrsev],[Corgadt],[Corgkod],[Cperbad],[Cpercin],[Cpersad],[Cpozkod],[Csakkod2],[Csicili],[Cyakren],[IsMailAdresi],[MasrafYeriAdi],[MasrafYeriKodu],[OzelMailAdresi],[TcKimlikNo],[UnvanAciklamasi],[UnvanKodu],[YoneticiPozisyonAdi],[YoneticiPozisyonKodu],[calisanGrupKodu],[DateCreated],[IsActive]) VALUES(@Caskerh, @Ccalgrb, @Ccikisn, @Ccikist, @Cdogtar, @Cfnksyn, @Cgirist, @Chukkod, @Ciliadi, @Cilkgir, @Cisyeri, @Ckadadt, @Ckangrb, @Ckunvan, @Cmedhal, @Cogrsev, @Corgadt, @Corgkod, @Cperbad, @Cpercin, @Cpersad, @Cpozkod, @Csakkod2, @Csicili, @Cyakren, @IsMailAdresi, @MasrafYeriAdi, @MasrafYeriKodu, @OzelMailAdresi, @TcKimlikNo, @UnvanAciklamasi,@UnvanKodu, @YoneticiPozisyonAdi, @YoneticiPozisyonKodu,@calisanGrupKodu,@DateCreated, @IsActive)";
         static string selectSql = "SELECT [ID],[Caskerh],[Ccalgrb],[Ccikisn],[Ccikist],[Cdogtar],[Cfnksyn],[Cgirist],[Chukkod],[Ciliadi],[Cilkgir],[Cisyeri],[Ckadadt],[Ckangrb],[Ckunvan],[Cmedhal],[Cogrsev],[Corgadt],[Corgkod],[Cperbad],[Cpercin],[Cpersad] ,[Cpozkod],[Csakkod2],[Csicili],[Cyakren],[IsMailAdresi],[MasrafYeriAdi],[MasrafYeriKodu],[OzelMailAdresi],[TcKimlikNo],[UnvanAciklamasi],[UnvanKodu],[YoneticiPozisyonAdi],[YoneticiPozisyonKodu],[DateCreated],[DateModified],[IsActive] FROM [EmployeeDx]";
         static string truncateSql = "truncate table EmployeeDx";
         static ILogger<Program> logProvider;
@@ -355,6 +355,13 @@ namespace SabanciDxManagement
                         cmd.Parameters.Add("@YoneticiPozisyonKodu", SqlDbType.NVarChar).Value = personel.yoneticipozisyonkodu;
                     else
                         cmd.Parameters.Add("@YoneticiPozisyonKodu", SqlDbType.NVarChar).Value = DBNull.Value;
+                    
+                    if (!string.IsNullOrEmpty(personel.calisanGrupKodu))
+                        cmd.Parameters.Add("@calisanGrupKodu", SqlDbType.NVarChar).Value = personel.calisanGrupKodu;
+                    else
+                        cmd.Parameters.Add("@calisanGrupKodu", SqlDbType.NVarChar).Value = DBNull.Value;
+                  
+
                     cmd.Parameters.Add("@DateCreated", SqlDbType.DateTime).Value = DateTime.Now;
                     cmd.Parameters.Add("@IsActive", SqlDbType.Bit).Value = 1;
                     cmd.ExecuteNonQuery();
